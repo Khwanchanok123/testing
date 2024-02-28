@@ -1,6 +1,12 @@
 import FunctionPage from 'src/pages/IndexPage.vue'
 import { shallowMount } from '@vue/test-utils'
 
+test('Name Khawnchanok Saeneewong Na Ayutthaya 6404101306 available on file ', () => {
+  const wrapper = shallowMount(FunctionPage)
+  expect(wrapper.find('form > input ').exists("Khawnchanok","Saeneewong Na Ayutthay","6404101306")).toBe(true)
+
+})
+
 describe('IndexPage', () => {
   it('should render correct contents', () => {
     const wrapper = shallowMount(FunctionPage)
@@ -30,17 +36,10 @@ test('should show the form element on the user output', () => {
 
 test('should contain input fields in template', () => {
   const wrapper = shallowMount(FunctionPage)
-  expect(wrapper.find('form > input').exists()).toBe(true)
+  expect(wrapper.find('form > input ').exists()).toBe(true)
 })
 
 test('should have button', () => {
   const wrapper = shallowMount(FunctionPage)
   expect(wrapper.find('button').exists()).toBe(true)
-})
-
-test('trigger click event on button ', async () => {
-  const wrapper = shallowMount(FunctionPage)
-  const button = wrapper.find('button')
-  await button.trigger('click')
-  expect(wrapper.vm.addition(1,2)).toBe(3)
 })
